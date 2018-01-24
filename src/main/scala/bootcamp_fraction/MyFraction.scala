@@ -12,6 +12,8 @@ class MyFraction(val numerator: Int, val denominator: Int) {
     MyFraction(resultNumerator, resultDenominator)
   }
 
+  def +(other: MyFraction): MyFraction = add(other)
+
   def subtract(other: MyFraction): MyFraction = {
     val result0 = numerator * other.numerator
     val result1 = denominator * other.denominator
@@ -19,17 +21,31 @@ class MyFraction(val numerator: Int, val denominator: Int) {
     MyFraction(resultNumerator, result1)
   }
 
+  def -(other: MyFraction): MyFraction = subtract(other)
+
   def divide(divisor: MyFraction): MyFraction = {
     val resultNumerator = numerator * divisor.denominator
     val resultDenominator = divisor.numerator * denominator
     MyFraction(resultNumerator, resultDenominator)
   }
 
+  def /(other: MyFraction): MyFraction = divide(other)
+
   def multiply(other: MyFraction): MyFraction = {
     val resultNumerator = numerator * other.numerator
     val resultDenominator = denominator * other.denominator
     MyFraction(resultNumerator, resultDenominator)
   }
+
+  def *(other: MyFraction): MyFraction = multiply(other)
+
+  def unary_- :MyFraction = {
+    MyFraction(-numerator, denominator)
+  }
+
+  def unary_+ :MyFraction = this
+
+  def unary_! :MyFraction = MyFraction(denominator, numerator)
 
   override def toString: String = s"$numerator/$denominator"
 

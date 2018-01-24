@@ -75,4 +75,25 @@ class MyFractionSpec extends FlatSpec {
   "reduced" should "returns move negative from both denominator to numerator" in {
     assertResult(MyFraction(-2,3))(MyFraction(6,-9).reduced)
   }
+
+  "prefix -" should "return the negative of a positive fraction" in {
+    assertResult(MyFraction(-1,3))(-MyFraction(1,3))
+  }
+  it should "return the negative of a negative fraction (numerator)" in {
+    assertResult(MyFraction(1,3))(-MyFraction(-1,3))
+  }
+  it should "return the negative of a negative fraction (denominator)" in {
+    assertResult(MyFraction(-1,-3))(-MyFraction(1,-3))
+  }
+  it should "return the negative of a positive fraction (both operands negative)" in {
+    assertResult(MyFraction(1,-3))(-MyFraction(-1,-3))
+  }
+
+  "prefix +" should "returns same fraction" in {
+    assertResult(MyFraction(-1,-3))(+MyFraction(-1,-3))
+  }
+
+  "prefix !" should "flip the function" in {
+    assertResult(MyFraction(3,1))(!MyFraction(1,3))
+  }
 }

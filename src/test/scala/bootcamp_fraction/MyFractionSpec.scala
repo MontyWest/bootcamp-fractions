@@ -28,6 +28,10 @@ class MyFractionSpec extends FlatSpec {
     assertResult(new MyFraction(1,1))(MyFraction())
   }
 
+  it should "take a double and return the fractional representation" in {
+    assertResult(new MyFraction(17,5))(MyFraction.apply(3.4))
+  }
+
   "sum" should "add two fractions together" in {
     assertResult(MyFraction(10,12)){
       MyFraction(2,4).add(MyFraction(1,3))
@@ -58,5 +62,17 @@ class MyFractionSpec extends FlatSpec {
 
   "toDouble" should "return double representation of double" in {
     assertResult(1.625d)(MyFraction(13,8).toDouble)
+  }
+
+  "reduced" should "returns the reduced fraction" in {
+    assertResult(MyFraction(2,3))(MyFraction(6,9).reduced)
+  }
+
+  "reduced" should "returns remove negatives from both numerator and denominator" in {
+    assertResult(MyFraction(2,3))(MyFraction(-6,-9).reduced)
+  }
+
+  "reduced" should "returns move negative from both denominator to numerator" in {
+    assertResult(MyFraction(-2,3))(MyFraction(6,-9).reduced)
   }
 }

@@ -14,6 +14,8 @@ class MyFraction(val numerator: Int, val denominator: Int) {
 
   def toDouble: Double = numerator.toDouble / denominator.toDouble
 
+  def reduced: MyFraction = ???
+
   def canEqual(other: Any): Boolean = other.isInstanceOf[MyFraction]
 
   override def equals(other: Any): Boolean = other match {
@@ -36,4 +38,9 @@ object MyFraction {
   def apply(integer: Int): MyFraction = new MyFraction(integer, 1)
   def apply(): MyFraction = new MyFraction(1, 1)
 
+  def apply(decimal: Double): MyFraction = ???
+
+  def gcd(a: Int, b: Int): Int =
+    if (b == 0) a
+    else gcd(b, a % b)
 }

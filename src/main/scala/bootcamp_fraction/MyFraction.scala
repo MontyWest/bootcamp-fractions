@@ -14,6 +14,21 @@ class MyFraction(val numerator: Int, val denominator: Int) {
 
   def toDouble: Double = ???
 
+
+  def canEqual(other: Any): Boolean = other.isInstanceOf[MyFraction]
+
+  override def equals(other: Any): Boolean = other match {
+    case that: MyFraction =>
+      (that canEqual this) &&
+        numerator == that.numerator &&
+        denominator == that.denominator
+    case _ => false
+  }
+
+  override def hashCode(): Int = {
+    val state = Seq(numerator, denominator)
+    state.map(_.hashCode()).foldLeft(0)((a, b) => 31 * a + b)
+  }
 }
 
 object MyFraction {

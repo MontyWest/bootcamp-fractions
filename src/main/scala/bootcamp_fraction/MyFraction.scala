@@ -10,10 +10,9 @@ class MyFraction(val numerator: Int, val denominator: Int) {
 
   def multiply(other: MyFraction): MyFraction = ???
 
-  override def toString: String = ???
+  override def toString: String = s"$numerator/$denominator"
 
-  def toDouble: Double = ???
-
+  def toDouble: Double = numerator.toDouble / denominator.toDouble
 
   def canEqual(other: Any): Boolean = other.isInstanceOf[MyFraction]
 

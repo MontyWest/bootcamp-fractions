@@ -52,4 +52,11 @@ class MyFractionSpec extends FlatSpec {
     }
   }
 
+  "toString" should "format as <numerator>/<denominator>" in {
+    assertResult("5/3")(MyFraction(5,3).toString)
+  }
+
+  "toDouble" should "return double representation of double" in {
+    assertResult(1.625d)(MyFraction(13,8).toDouble)
+  }
 }

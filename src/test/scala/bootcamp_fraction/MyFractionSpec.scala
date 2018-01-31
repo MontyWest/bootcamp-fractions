@@ -4,6 +4,7 @@ import org.scalatest.FlatSpec
 
 class MyFractionSpec extends FlatSpec {
 
+
   "MyFraction constructor" should "not accept 0 as denominator" in {
     assertThrows[IllegalArgumentException]{
       new MyFraction(1, 0)
@@ -95,5 +96,23 @@ class MyFractionSpec extends FlatSpec {
 
   "prefix !" should "flip the function" in {
     assertResult(MyFraction(3,1))(!MyFraction(1,3))
+  }
+
+  "implicit conversion" should "exist for int to MyFraction" in {
+    import MyFractionOps.int2MyFraction
+    val converted: MyFraction = 3
+    assertResult(MyFraction(3,1))(converted)
+  }
+
+  it should "exist for double to MyFraction" in {
+    import MyFractionOps.double2MyFraction
+    val converted: MyFraction = 3.5
+    assertResult(MyFraction(7,2))(converted)
+  }
+
+  it should "exist for MyFraction to double" in {
+    import MyFractionOps.myFraction2Double
+    val converted: Double = MyFraction(7,2)
+    assertResult(3.5)(converted)
   }
 }

@@ -92,3 +92,12 @@ object MyFraction {
     if (b == 0) a
     else gcd(b, a % b)
 }
+
+object MyFractionOps {
+
+  implicit def int2MyFraction(i: Int): MyFraction = MyFraction(i)
+
+  implicit def double2MyFraction(d: Double): MyFraction = MyFraction(d)
+  implicit def myFraction2Double(myFraction: MyFraction): Double = myFraction.toDouble
+
+}

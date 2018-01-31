@@ -115,4 +115,52 @@ class MyFractionSpec extends FlatSpec {
     val converted: Double = MyFraction(7,2)
     assertResult(3.5)(converted)
   }
+
+  "pattern matching" should "be possible for MyFraction instance" in {
+    assertResult((3,4)){
+      MyFraction(3,4) match {
+        case MyFraction(n,d) => (n,d)
+      }
+    }
+  }
+
+  it should "be possible for MyFraction instance with slash infix notation" in {
+    assertResult((3,4)){
+      MyFraction(3,4) match {
+        case n / d => (n,d)
+      }
+    }
+  }
+
+  it should "be possible for double" in {
+    assertResult((3,4)){
+      0.75 match {
+        case MyFraction(n,d) => (n,d)
+      }
+    }
+  }
+
+  it should "be possible for double with slash infix notation" in {
+    assertResult((3,4)){
+      0.75 match {
+        case n / d => (n,d)
+      }
+    }
+  }
+
+  it should "be possible for int" in {
+    assertResult((4,1)){
+      4 match {
+        case MyFraction(n,d) => (n,d)
+      }
+    }
+  }
+
+  it should "be possible for int with slash infix notation" in {
+    assertResult((4,1)){
+      4 match {
+        case n / d => (n,d)
+      }
+    }
+  }
 }

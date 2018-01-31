@@ -1,6 +1,6 @@
 *.class
 *.log
 
-MSH-fractions/
+MSH-FractionExtractors/
 .idea/
 target/

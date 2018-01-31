@@ -83,15 +83,48 @@ object MyFraction {
     var j = 1
     while(!d.isValidInt) {
       j *= 10
-      d *= j
+      d *= 10
     }
     MyFraction(d.toInt, j).reduced
+  }
+
+  def unapply(myFraction: MyFraction): Option[(Int, Int)] = {
+    Some((myFraction.numerator, myFraction.denominator))
+  }
+
+  def unapply(d: Double): Option[(Int,Int)] = {
+    val myFraction = MyFraction(d)
+    Some((myFraction.numerator, myFraction.denominator))
+  }
+
+  def unapply(i: Int): Option[(Int, Int)] = {
+    val myFraction = MyFraction(i)
+    Some((myFraction.numerator, myFraction.denominator))
   }
 
   def gcd(a: Int, b: Int): Int =
     if (b == 0) a
     else gcd(b, a % b)
 }
+
+object / {
+
+  def unapply(myFraction: MyFraction): Option[(Int, Int)] = {
+    Some((myFraction.numerator, myFraction.denominator))
+  }
+
+  def unapply(d: Double): Option[(Int,Int)] = {
+    val myFraction = MyFraction(d)
+    Some((myFraction.numerator, myFraction.denominator))
+  }
+
+  def unapply(i: Int): Option[(Int, Int)] = {
+    val myFraction = MyFraction(i)
+    Some((myFraction.numerator, myFraction.denominator))
+  }
+
+}
+
 
 object MyFractionOps {
 
